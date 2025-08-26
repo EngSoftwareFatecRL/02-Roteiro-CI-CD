@@ -509,4 +509,3 @@ Cada integrante do grupo deve enviar **via Microsoft Teams** os seguintes artefa
 
 **Boa sorte e bom aprendizado! 🚀**
 
-*Última atualização do roteiro: {{data_atual}}*

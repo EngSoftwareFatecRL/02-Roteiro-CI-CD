@@ -1,13 +1,31 @@
-# 📌 Atividade Prática: Integração Contínua (CI) e Entrega Contínua (CD) com GitHub e Azure
+# 📌 Atividade Prática: Integração Contínua (CI) e Entrega Contínua (CD) com GitHub Pages
 
 ## 🎯 **Objetivo**
-Esta atividade tem como objetivo proporcionar experiência prática com os conceitos de **Integração Contínua (CI)** e **Entrega Contínua (CD)**, utilizando **GitHub** como ferramenta de versionamento e **Azure Static Web Apps** como ambiente de hospedagem.
+Esta atividade tem como objetivo proporcionar experiência prática com os conceitos de **Integração Contínua (CI)** e **Entrega Contínua (CD)**, utilizando **GitHub** como ferramenta de versionamento e **GitHub Pages** como ambiente de hospedagem.
 
 > **IMPORTANTE:** Para esta atividade, será necessário pelo menos **um outro colaborador**. Todos os integrantes do grupo devem **realizar e documentar a execução das tarefas**.
+
+## 📂 **Estrutura do Repositório**
+
+Este repositório já contém todos os arquivos necessários para a execução da atividade:
+
+| Arquivo | Descrição |
+|---|---|
+| `index.html` | Página HTML inicial do projeto (será personalizada por você) |
+| `contribuicao.html` | Trecho HTML de referência para a contribuição do colaborador |
+| `.github/workflows/deploy.yml` | Workflow do GitHub Actions para deploy automático no GitHub Pages |
+| `README.md` | Este roteiro de atividade |
+
+> **Você NÃO precisa copiar código de blocos de texto.** Todos os arquivos necessários já estão neste repositório. Basta fazer um **fork** e trabalhar a partir dele.
 
 ---
 
 ## 📚 **Conceitos Fundamentais**
+
+### 🔸 **Fork**
+Um **fork** é uma cópia completa de um repositório para a sua própria conta no GitHub. Diferente de um clone (que é local), o fork cria um repositório independente no GitHub ligado ao repositório original. Isso permite que você experimente livremente sem afetar o projeto original.
+
+**Analogia:** É como tirar uma fotocópia de um documento — você pode rabiscar e modificar à vontade sem alterar o original.
 
 ### 🔸 **Branch**
 Um **branch** (ramificação) é uma linha independente de desenvolvimento no Git. Permite que você trabalhe em novas funcionalidades ou correções sem afetar o código principal (geralmente no branch `main` ou `master`). Cada branch mantém seu próprio histórico de commits até ser mesclado (merge) com outro branch.
@@ -66,109 +84,62 @@ git config user.email
 > - [ ] Configurou user.name e user.email no Git
 > - [ ] Testou com `git config user.name` e viu seu nome correto
 > - [ ] Tem uma conta ativa no GitHub
-> - [ ] Tem acesso ao portal Azure com email institucional
 
 ---
 
-### 🔹 **FASE 1: Configuração Inicial no GitHub**
+### 🔹 **FASE 1: Fork e Configuração Inicial**
 
-#### **1.1 Criação do Repositório**
+#### **1.1 Fazendo o Fork do Repositório**
 1. Faça login na sua conta do **GitHub** (github.com)
-2. Clique no botão **"New"** ou **"+"** → **"New repository"**
-3. Configure o repositório:
-   - **Repository name:** `CI_CD`
-   - **Visibility:** Public
-   - Inicialize com README
-4. Clique em **"Create repository"**
+2. Acesse o repositório original deste projeto (URL fornecida pelo professor)
+3. Clique no botão **"Fork"** (canto superior direito)
+4. Na tela de criação do fork:
+   - **Owner:** Sua conta pessoal
+   - **Repository name:** Pode manter o nome original ou renomear
+   - Mantenha marcada a opção **"Copy the `main` branch only"**
+5. Clique em **"Create fork"**
+
+> O fork criará uma cópia completa do repositório na sua conta, incluindo o arquivo `index.html`, o workflow de deploy e este roteiro.
 
 #### **1.2 Configuração de Colaboradores**
-1. No repositório criado, vá em **Settings** → **Manage access** → **Invite a collaborator**
+1. No **seu fork**, vá em **Settings** → **Collaborators** → **Add people**
 2. Digite o username ou email do(s) colaborador(es)
 3. O colaborador receberá um convite por email que deve aceitar
 
 ### ✅ **PONTO DE VERIFICAÇÃO #2**
 > **Confirme que:**
-> - [ ] O repositório `CI_CD` foi criado com sucesso
+> - [ ] O fork do repositório foi criado na sua conta com sucesso
 > - [ ] Está configurado como público
 > - [ ] O(s) colaborador(es) receberam e aceitaram o convite
-> - [ ] Você copiou a URL do repositório (formato: `https://github.com/seu-usuario/CI_CD.git`)
+> - [ ] O repositório contém os arquivos: `index.html`, `.github/workflows/deploy.yml`, `contribuicao.html`
+> - [ ] Você copiou a URL do seu fork (formato: `https://github.com/seu-usuario/nome-do-repo.git`)
 
 ---
 
-### 🔹 **FASE 2: Primeira Implementação do Código**
+### 🔹 **FASE 2: Clonando e Personalizando o Projeto**
 
-#### **2.1 Clonando o Repositório**
+#### **2.1 Clonando o Repositório (Fork)**
 ```bash
-# Clone o repositório vazio
-git clone https://github.com/seu-usuario/CI_CD.git
+# Clone o seu fork (substitua pela URL do SEU fork)
+git clone https://github.com/seu-usuario/nome-do-repo.git
 
 # Entre na pasta do projeto
-cd CI_CD
+cd nome-do-repo
 ```
 
-#### **2.2 Criando a Estrutura Inicial**
-Crie um arquivo `index.html` com o seguinte conteúdo:
+#### **2.2 Personalizando a Página Inicial**
+O arquivo `index.html` já existe no repositório. Abra-o no seu editor de texto e personalize:
 
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CI/CD - Prática de Engenharia de Software</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            color: #333;
-            border-bottom: 2px solid #007acc;
-            padding-bottom: 10px;
-        }
-        .info {
-            background-color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .timestamp {
-            color: #666;
-            font-style: italic;
-        }
-    </style>
-</head>
-<body>
-    <h1>🚀 Deploy Automatizado com GitHub Actions e Azure</h1>
-    
-    <div class="info">
-        <h2>Sobre o Projeto</h2>
-        <p>Este é um projeto de demonstração de CI/CD para a disciplina de Engenharia de Software.</p>
-        <p class="timestamp">Versão inicial - Data: <script>document.write(new Date().toLocaleDateString('pt-BR'));</script></p>
-    </div>
-    
-    <div class="info">
-        <h2>Equipe</h2>
-        <ul>
-            <li>Desenvolvedor 1: [Seu nome aqui]</li>
-            <li>Desenvolvedor 2: [Nome do colaborador]</li>
-        </ul>
-    </div>
-</body>
-</html>
-```
+1. Substitua `[Seu nome aqui]` pelo seu nome real
+2. Substitua `[Nome do colaborador]` pelo nome do seu colaborador
 
-#### **2.3 Enviando para o GitHub**
+#### **2.3 Enviando as Alterações para o GitHub**
 ```bash
-# Adicione o arquivo ao stage
+# Adicione as mudanças ao stage
 git add index.html
 
 # Faça o commit com mensagem descritiva
-git commit -m "feat: adiciona página inicial do projeto CI/CD"
+git commit -m "feat: personaliza página inicial com nomes da equipe"
 
 # Envie para o GitHub
 git push origin main
@@ -176,52 +147,39 @@ git push origin main
 
 ### ✅ **PONTO DE VERIFICAÇÃO #3**
 > **Verifique:**
-> - [ ]**** O comando `git status` mostra "working tree clean"
-> - [ ] No GitHub, o arquivo index.html aparece no repositório
+> - [ ] O comando `git status` mostra "working tree clean"
+> - [ ] No GitHub, o arquivo `index.html` mostra os nomes atualizados
 > - [ ] O commit aparece no histórico com seu nome configurado corretamente
 
 ---
 
-### 🔹 **FASE 3: Configuração do Deploy Automático no Azure**
+### 🔹 **FASE 3: Configuração do GitHub Pages**
 
-#### **3.1 Criando o Static Web App**
-1. Acesse o portal do **Azure**: [portal.azure.com](https://portal.azure.com)
-2. Entre com seu **email institucional**
-3. No menu lateral ou barra de busca, procure por **"Static Web Apps"**
-4. Clique em **"+ Create"** ou **"Criar"**
+#### **3.1 Ativando o GitHub Pages**
+1. No seu fork no GitHub, vá em **Settings** → **Pages** (menu lateral esquerdo)
+2. Em **"Source"**, selecione **"GitHub Actions"**
+3. Pronto! O workflow `.github/workflows/deploy.yml` (que já está no repositório) será usado automaticamente
 
-#### **3.2 Configuração do Recurso**
-Preencha os campos:
-- **Subscription:** Selecione sua assinatura
-- **Resource Group:** Crie um novo grupo chamado `rg-cicd-practice`
-- **Name:** `webapp-cicd-seunome` (use seu nome para evitar conflitos)
-- **Region:** Brazil South (ou mais próxima)
-- **Plan type:** Free
-- **Source:** GitHub
-- **GitHub Account:** Faça login e autorize o Azure
+> **Nota:** O arquivo de workflow já está configurado no repositório. Você não precisa criar nenhum arquivo adicional.
 
-#### **3.3 Configuração do Deploy**
-- **Organization:** Seu usuário do GitHub
-- **Repository:** CI_CD
-- **Branch:** main
-- **Build Presets:** Custom
-- **App location:** `/` (raiz)
-- **Api location:** (deixe vazio)
-- **Output location:** (deixe vazio)
+#### **3.2 Disparando o Primeiro Deploy**
+O deploy será disparado automaticamente sempre que houver um push no branch `main`. Como você já fez um push na FASE 2, o deploy já deve estar em andamento.
 
-Clique em **"Review + create"** → **"Create"**
+1. Vá na aba **"Actions"** do seu repositório
+2. Verifique se o workflow **"Deploy to GitHub Pages"** está em execução ou já completou
+3. Se não houver nenhuma execução, faça um push qualquer no `main` para disparar
 
-#### **3.4 Verificando o Deploy**
-1. Aguarde a criação do recurso (2-3 minutos)
-2. Vá para o recurso criado
-3. Na página de Overview, copie a **URL** do seu site
+#### **3.3 Verificando o Deploy**
+1. Aguarde o workflow completar (1-3 minutos)
+2. Vá em **Settings** → **Pages** novamente
+3. Você verá a URL do seu site no formato: `https://seu-usuario.github.io/nome-do-repo/`
 4. Abra a URL em um navegador para verificar se está funcionando
 
 ### ✅ **PONTO DE VERIFICAÇÃO #4**
 > **Confirme que:**
-> - [ ] O recurso Static Web App foi criado com sucesso
-> - [ ] Um workflow do GitHub Actions foi adicionado automaticamente ao repositório
-> - [ ] O site está acessível pela URL do Azure
+> - [ ] O GitHub Pages está ativado com source "GitHub Actions"
+> - [ ] O workflow de deploy executou com sucesso (check verde ✅ na aba Actions)
+> - [ ] O site está acessível pela URL do GitHub Pages
 > - [ ] A página HTML está sendo exibida corretamente
 
 ---
@@ -244,9 +202,9 @@ git push -u origin develop
 #### **4.2 Configuração do Colaborador**
 O colaborador deve executar:
 ```bash
-# Clone o repositório (se ainda não tiver)
-git clone https://github.com/usuario-principal/CI_CD.git
-cd CI_CD
+# Clone o fork (se ainda não tiver) — use a URL do fork do colega
+git clone https://github.com/usuario-principal/nome-do-repo.git
+cd nome-do-repo
 
 # Configure sua identidade (se ainda não configurou)
 git config user.name "Nome do Colaborador"
@@ -270,30 +228,16 @@ git checkout develop
 ### 🔹 **FASE 5: Implementação de Mudanças Colaborativas**
 
 #### **5.1 Modificações pelo Colaborador**
-O colaborador deve modificar o `index.html`:
+O colaborador deve modificar o `index.html`, adicionando o conteúdo do arquivo `contribuicao.html` (que já está no repositório) **antes** do fechamento `</body>`.
 
-```html
-<!-- Adicione após a div com classe "info" da equipe -->
-<div class="info">
-    <h2>📝 Alterações Recentes</h2>
-    <ul>
-        <li>Implementação de CI/CD com GitHub Actions ✅</li>
-        <li>Deploy automático no Azure Static Web Apps ✅</li>
-        <li>Configuração de branch protection (em progresso)</li>
-    </ul>
-    <p class="timestamp">Última atualização por: [Nome do Colaborador] - <script>document.write(new Date().toLocaleString('pt-BR'));</script></p>
-</div>
+**Passos:**
+1. Abra o arquivo `contribuicao.html` que já está no repositório
+2. Copie o conteúdo HTML dele
+3. Abra o arquivo `index.html`
+4. Cole o conteúdo copiado **antes** da tag `</body>`
+5. Personalize substituindo `[Nome do Colaborador]` pelo nome real
 
-<div class="info">
-    <h2>🔧 Tecnologias Utilizadas</h2>
-    <ul>
-        <li>Git & GitHub - Controle de versão</li>
-        <li>GitHub Actions - Pipeline CI/CD</li>
-        <li>Azure Static Web Apps - Hospedagem</li>
-        <li>HTML5 & CSS3 - Front-end</li>
-    </ul>
-</div>
-```
+> **Dica:** O arquivo `contribuicao.html` serve apenas como referência/modelo. O conteúdo dele deve ser inserido dentro do `index.html`.
 
 #### **5.2 Commit e Push das Alterações**
 ```bash
@@ -324,12 +268,15 @@ git push origin develop
 ### 🔹 **FASE 6: Processo de Pull Request e Merge**
 
 #### **6.1 Criando o Pull Request**
-1. No GitHub, vá para a página do repositório
+1. No GitHub, vá para a página do repositório (fork)
 2. Você verá uma notificação sobre o push recente no `develop`
 3. Clique em **"Compare & pull request"**
 4. Ou vá em **"Pull requests"** → **"New pull request"**
 
+> **⚠️ Atenção:** Certifique-se de que o PR é para o **seu fork** (base: `seu-usuario/nome-do-repo` branch `main`) e **não** para o repositório original do professor.
+
 #### **6.2 Configurando o PR**
+- **Base repository:** seu-usuario/nome-do-repo (seu fork)
 - **Base branch:** main
 - **Compare branch:** develop
 - **Título:** "Feature: Adiciona informações do projeto e equipe"
@@ -384,19 +331,19 @@ N/A (primeira iteração)
 3. Clique nele para ver os detalhes
 4. Acompanhe cada step:
    - Checkout do código
-   - Setup do Node.js
-   - Build do projeto
-   - Deploy para Azure
+   - Configuração do GitHub Pages
+   - Upload do artefato
+   - Deploy para GitHub Pages
 
 #### **7.2 Verificando o Site Atualizado**
-1. Aguarde o workflow completar (2-5 minutos)
-2. Acesse novamente a URL do Azure
+1. Aguarde o workflow completar (1-3 minutos)
+2. Acesse novamente a URL do GitHub Pages: `https://seu-usuario.github.io/nome-do-repo/`
 3. Use **Ctrl+F5** para forçar atualização do cache
 4. Confirme que as novas seções aparecem
 
 ### ✅ **PONTO DE VERIFICAÇÃO #8 - FINAL**
 > **Validação completa:**
-> - [ ] O site no Azure mostra a versão atualizada
+> - [ ] O site no GitHub Pages mostra a versão atualizada
 > - [ ] O histórico de commits mostra contribuições de todos
 > - [ ] O GitHub Actions mostra histórico de builds bem-sucedidos
 > - [ ] Todos os membros da equipe participaram ativamente
@@ -422,17 +369,34 @@ git push origin develop
 **Verificar:**
 1. Clique no workflow falho
 2. Leia os logs de erro
-3. Comum: arquivo YAML mal formatado
-4. Verifique o arquivo `.github/workflows/` no repositório
+3. Comum: arquivo YAML mal formatado ou permissões insuficientes
+4. Verifique o arquivo `.github/workflows/deploy.yml` no repositório
+5. Verifique se em **Settings → Pages** o source está configurado como **"GitHub Actions"**
 
-### 🔧 **Problema 3: Site não atualiza no Azure**
+### 🔧 **Problema 3: Site não atualiza no GitHub Pages**
 **Sintoma:** Mudanças não aparecem após deploy
 
 **Soluções:**
 1. Limpe o cache do navegador (Ctrl+Shift+Del)
 2. Use modo anônimo/privado
-3. Verifique se o deploy realmente completou no Actions
-4. No Azure Portal, verifique os logs do Static Web App
+3. Verifique se o deploy realmente completou na aba Actions
+4. Aguarde alguns minutos — o GitHub Pages pode levar até 10 minutos para propagar
+
+### 🔧 **Problema 4: GitHub Pages mostra erro 404**
+**Sintoma:** Página não encontrada ao acessar a URL
+
+**Soluções:**
+1. Verifique se o GitHub Pages está ativado em **Settings → Pages**
+2. Confirme que o source é **"GitHub Actions"**
+3. Verifique se o arquivo `index.html` está na raiz do repositório
+4. Aguarde o workflow concluir e tente novamente
+
+### 🔧 **Problema 5: PR vai para o repositório original ao invés do fork**
+**Sintoma:** O Pull Request é direcionado ao repositório do professor
+
+**Solução:**
+1. Na tela de criação do PR, altere o **"base repository"** para o seu fork
+2. Confirme que tanto o base quanto o compare apontam para **seu fork**
 
 ---
 
@@ -444,12 +408,12 @@ Cada integrante do grupo deve enviar **via Microsoft Teams** os seguintes artefa
 
 #### **Artefatos Obrigatórios:**
 
-1. **Link do repositório no GitHub**
-   - Formato: `https://github.com/seu-usuario/CI_CD`
+1. **Link do repositório (fork) no GitHub**
+   - Formato: `https://github.com/seu-usuario/nome-do-repo`
    - O repositório deve estar público
 
-2. **Link do site publicado no Azure**
-   - Formato: `https://nome-do-app.azurestaticapps.net`
+2. **Link do site publicado no GitHub Pages**
+   - Formato: `https://seu-usuario.github.io/nome-do-repo/`
    - O site deve estar acessível e funcionando
 
 3. **Captura de tela (screenshot) dos commits no branch `develop`**
@@ -480,10 +444,11 @@ Cada integrante do grupo deve enviar **via Microsoft Teams** os seguintes artefa
 - [GitHub Flow](https://docs.github.com/pt/get-started/quickstart/github-flow) - Fluxo de trabalho
 - [About Pull Requests](https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
 - [GitHub Skills](https://skills.github.com/) - Cursos interativos gratuitos
+- [Forking a Repository](https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) - Guia sobre Forks
 
 ### **CI/CD e DevOps**
 - [GitHub Actions Documentation](https://docs.github.com/pt/actions)
-- [Azure Static Web Apps Docs](https://docs.microsoft.com/pt-br/azure/static-web-apps/)
+- [GitHub Pages Documentation](https://docs.github.com/pt/pages)
 - [Martin Fowler - Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html)
 - [The Phoenix Project](https://www.amazon.com.br/dp/B078Y98RG8/) - Livro sobre DevOps (leitura complementar)
 
@@ -499,13 +464,13 @@ Cada integrante do grupo deve enviar **via Microsoft Teams** os seguintes artefa
 1. **Sempre faça pull antes de push** para evitar conflitos
 2. **Commits frequentes e pequenos** são melhores que commits grandes
 3. **Mensagens de commit descritivas** ajudam no histórico do projeto
-4. **Teste localmente** antes de fazer push
+4. **Teste localmente** antes de fazer push (basta abrir o `index.html` no navegador)
 5. **Comunique-se** com sua equipe constantemente
 6. **Documente** suas decisões e problemas encontrados
 7. **Explore** os logs e ferramentas - não tenha medo de experimentar
+8. **Verifique o base repository** ao criar PRs em forks — aponte para o seu fork, não o original
 
 ---
-
 
 **Boa sorte e bom aprendizado! 🚀**
 

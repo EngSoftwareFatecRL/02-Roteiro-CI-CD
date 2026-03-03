@@ -241,9 +241,16 @@ git push origin main
 
 ### 🔹 **FASE 3: Criação do Workflow e Configuração do GitHub Pages**
 
-Nesta fase você irá criar manualmente o arquivo de workflow do GitHub Actions e ativar o GitHub Pages. Este é o coração da prática de CD (Entrega Contínua).
+Nesta fase você irá ativar o GitHub Pages **antes** de criar o arquivo de workflow do GitHub Actions. Esta ordem é importante: se o Pages não estiver ativado quando o primeiro push do workflow ocorrer, o job de deploy falhará imediatamente.
 
-#### **3.1 Criando a estrutura de pastas do workflow**
+#### **3.1 Ativando o GitHub Pages**
+1. No seu fork no GitHub, vá em **Settings** → **Pages** (menu lateral esquerdo)
+2. Em **"Source"**, selecione **"GitHub Actions"**
+3. Salve as configurações
+
+> **Nota:** O GitHub Pages precisa estar configurado antes do push do workflow. Assim, quando o Actions executar o deploy pela primeira vez, o ambiente já estará pronto para receber a publicação.
+
+#### **3.2 Criando a estrutura de pastas do workflow**
 O GitHub Actions exige que os arquivos de workflow fiquem em `.github/workflows/`. Crie essa estrutura na raiz do repositório clonado:
 
 ```bash
@@ -253,9 +260,12 @@ mkdir -p .github/workflows
 
 # Windows (PowerShell)
 New-Item -ItemType Directory -Force -Path .github\workflows
+
+# Windows (Prompt de Comando — cmd)
+mkdir .github\workflows
 ```
 
-#### **3.2 Criando o arquivo de workflow**
+#### **3.3 Criando o arquivo de workflow**
 Crie o arquivo `.github/workflows/deploy.yml` no seu editor de texto com o seguinte conteúdo:
 
 ```yaml
@@ -309,7 +319,7 @@ jobs:
 
 > 💡 Releia a seção **"GitHub Actions — O Motor do CI/CD"** acima caso queira entender o que cada bloco do arquivo faz antes de prosseguir.
 
-#### **3.3 Fazendo commit e push do workflow**
+#### **3.4 Fazendo commit e push do workflow**
 ```bash
 # Adicione o arquivo ao stage
 git add .github/workflows/deploy.yml
@@ -321,15 +331,8 @@ git commit -m "ci: adiciona workflow de deploy automatico no GitHub Pages"
 git push origin main
 ```
 
-#### **3.4 Ativando o GitHub Pages**
-1. No seu fork no GitHub, vá em **Settings** → **Pages** (menu lateral esquerdo)
-2. Em **"Source"**, selecione **"GitHub Actions"**
-3. Salve as configurações
-
-> **Nota:** O GitHub Pages precisa desta configuração para saber que o deploy será gerenciado pelo workflow que você acabou de criar, e não pela publicação direta de um branch.
-
 #### **3.5 Verificando o Primeiro Deploy**
-O push realizado no passo 3.3 já disparou o workflow automaticamente.
+O push realizado no passo 3.4 já disparou o workflow automaticamente.
 
 1. Vá na aba **"Actions"** do seu repositório
 2. Você verá o workflow **"Deploy to GitHub Pages"** em execução ou já concluído

@@ -11,10 +11,11 @@
             margin: 0 auto;
             padding: 20px;
             background-color: #f5f5f5;
+            
         }
         h1 {
             color: #333;
-            border-bottom: 2px solid #007acc;
+            border-bottom: 2px solid #0263a3;
             padding-bottom: 10px;
         }
         .info {
@@ -28,10 +29,50 @@
             color: #666;
             font-style: italic;
         }
+        .dark {
+            background-color: #1e1e1e;
+            color: white;
+        }
+        .dark .info {
+            background-color: #2c2c2c;
+        }
+        .dark h1 {
+            color: white;
+            border-bottom: 2px solid #66ccff;
+        }
+        .dark .timestamp {
+            color: #007fbe;
+        }
+        .btn-dark {
+        background: linear-gradient(135deg, #023d64, #2d81b6);
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        }
+        .btn-dark:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
     <h1>🚀 Deploy Automatizado com GitHub Actions e GitHub Pages</h1>
+
+    <div class="info">
+    <h2>🌙 Modo Escuro</h2>
+    <button onclick="toggleDarkMode()" class="btn-dark" >Alternar Tema</button>
+    </div>
+
+    <script>
+    function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+    }
+    </script>
     
     <div class="info">
         <h2>Sobre o Projeto</h2>
@@ -42,9 +83,29 @@
     <div class="info">
         <h2>Equipe</h2>
         <ul>
-            <li>Desenvolvedor 1: [Seu nome aqui]</li>
-            <li>Desenvolvedor 2: [Nome do colaborador]</li>
+            <li>Desenvolvedor 1: Kaylane Silva</li>
+            <li>Desenvolvedor 2: Eduardo Fagundes</li>
+            <li>Desenvolvedor 3: Giovanna Muller</li>
         </ul>
     </div>
+    <div class="info">
+    <h2>📝 Alterações Recentes</h2>
+    <ul>
+        <li>Implementação de CI/CD com GitHub Actions ✅</li>
+        <li>Deploy automático no GitHub Pages ✅</li>
+        <li>Configuração de branch protection (em progresso)</li>
+    </ul>
+    <p class="timestamp">Última atualização por: Eduardo Fagundes - <script>document.write(new Date().toLocaleString('pt-BR'));</script></p>
+</div>
+
+<div class="info">
+    <h2>🔧 Tecnologias Utilizadas</h2>
+    <ul>
+        <li>Git & GitHub - Controle de versão</li>
+        <li>GitHub Actions - Pipeline CI/CD</li>
+        <li>GitHub Pages - Hospedagem</li>
+        <li>HTML5 & CSS3 - Front-end</li>
+    </ul>
+</div>
 </body>
 </html>
